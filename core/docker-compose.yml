@@ -1,0 +1,4 @@
+version: "3.8"
+
+services:
+  # Your core services and configurations

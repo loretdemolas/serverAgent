@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Edit Compose File</h2>
+  
+  <form method="POST" action="{{ url_for('save_compose_file', file_name=file_name) }}">
+    <textarea name="compose_content" rows="10" cols="80">{{ compose_content }}</textarea>
+    <br>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

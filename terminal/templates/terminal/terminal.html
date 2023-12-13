@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Terminal - ServerAgent{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            // Handle the form submission
+            $('#commandForm').submit(function(event){
+                event.preventDefault();
+                var command = $('#commandInput').val();
+                socket.emit('input_command', {command: command});
+                $('#commandInput').val('');
+            });
+
+            // Handle the output result from the server
+            socket.on('output_result', function(data){
+                $('#output').append(data.output);
+                $('#output').scrollTop($('#output')[0].scrollHeight);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Terminal</h1>
+
+    <form id="commandForm">
+        <label for="commandInput">Command:</label>
+        <input type="text" id="commandInput" name="commandInput" autocomplete="off">
+        <button type="submit">Run</button>
+    </form>
+
+    <div id="output" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-top: 10px;"></div>
+</body>
+</html>
+{% endblock %}

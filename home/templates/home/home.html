@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - ServerAgent{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Active Containers</h1>
+    <div class="container-tiles">
+        {% for container in containers %}
+            <div class="container-tile">
+                <h2>{{ container.name }}</h2>
+                <p>Status: {{ container.status }}</p>
+                <form method="post" action="{{ url_for('start_container', container_id=container.id) }}">
+                    <button type="submit">Start</button>
+                </form>
+                <form method="post" action="{{ url_for('stop_container', container_id=container.id) }}">
+                    <button type="submit">Stop</button>
+                </form>
+                <form method="post" action="{{ url_for('restart_container', container_id=container.id) }}">
+                    <button type="submit">Restart</button>
+                </form>
+                <a href="{{ url_for('container_logs', container_id=container.id) }}">View Logs</a>
+                <a href="{{ url_for('additional_content', container_id=container.id) }}">Additional Content</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+{% endblock %}

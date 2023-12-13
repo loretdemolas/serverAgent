@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ServerAgent{% endblock %}</title>
+    <!-- Add any additional CSS styles or links here -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home.root') }}">Home</a></li>
+            <li><a href="{{ url_for('compose.index') }}">Compose</a></li>
+            <li><a href="{{ url_for('terminal.index') }}">Terminal</a></li>
+            <!-- Add more tabs as needed -->
+        </ul>
+    </nav>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <!-- Add any additional scripts or JavaScript here -->
+</body>
+</html>

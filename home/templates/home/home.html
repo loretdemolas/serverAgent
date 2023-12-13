@@ -18,17 +18,17 @@
             <div class="container-tile">
                 <h2>{{ container.name }}</h2>
                 <p>Status: {{ container.status }}</p>
-                <form method="post" action="{{ url_for('start_container', container_id=container.id) }}">
+                <form method="post" action="{{ url_for('home.start_container', container_id=container.id) }}">
                     <button type="submit">Start</button>
                 </form>
-                <form method="post" action="{{ url_for('stop_container', container_id=container.id) }}">
+                <form method="post" action="{{ url_for('home.stop_container', container_id=container.id) }}">
                     <button type="submit">Stop</button>
                 </form>
-                <form method="post" action="{{ url_for('restart_container', container_id=container.id) }}">
+                <form method="post" action="{{ url_for('home.restart_container', container_id=container.id) }}">
                     <button type="submit">Restart</button>
                 </form>
-                <a href="{{ url_for('container_logs', container_id=container.id) }}">View Logs</a>
-                <a href="{{ url_for('additional_content', container_id=container.id) }}">Additional Content</a>
+                <a href="{{ url_for('home.container_logs', container_id=container.id) }}">View Logs</a>
+                <a href="{{ url_for('additional_content.additional_content', container_id=container.id) }}">Additional Content</a>
             </div>
         {% endfor %}
     </div>

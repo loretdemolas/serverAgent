@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container Details - {{ container_name }}</title>
+    <style>
+        /* Add your styling here */
+    </style>
+</head>
+<body>
+    <h1>Container Details - {{ container_name }}</h1>
+
+    <h2>General Information</h2>
+    <ul>
+        <li><strong>Container ID:</strong> {{ container_id }}</li>
+        <li><strong>Image:</strong> {{ container_image }}</li>
+        <li><strong>Status:</strong> {{ container_status }}</li>
+        <li><strong>Created Time:</strong> {{ container_created_time }}</li>
+    </ul>
+
+    <h2>Resource Usage</h2>
+    <ul>
+        <li><strong>CPU Usage:</strong> {{ container_cpu_usage }}</li>
+        <li><strong>Memory Usage:</strong> {{ container_memory_usage }}</li>
+        <!-- Add more details for network and disk I/O stats -->
+    </ul>
+
+    <h2>Container Configuration</h2>
+    <ul>
+        <li><strong>Command:</strong> {{ container_command }}</li>
+        <li><strong>Environment Variables:</strong> {{ container_env_vars }}</li>
+        <li><strong>Exposed Ports:</strong> {{ container_exposed_ports }}</li>
+        <li><strong>Volumes:</strong> {{ container_volumes }}</li>
+    </ul>
+
+    <h2>Network Information</h2>
+    <ul>
+        <li><strong>IP Address:</strong> {{ container_ip_address }}</li>
+        <li><strong>Port Bindings:</strong> {{ container_port_bindings }}</li>
+    </ul>
+
+    <h2>Health Status</h2>
+    <ul>
+        <li><strong>Health Check Status:</strong> {{ container_health_status }}</li>
+        <li><strong>Last Health Check Result:</strong> {{ last_health_check_result }}</li>
+    </ul>
+
+    <h2>Labels and Metadata</h2>
+    <ul>
+        <li><strong>User-defined Labels:</strong> {{ container_labels }}</li>
+        <li><strong>Other Metadata:</strong> {{ container_metadata }}</li>
+    </ul>
+</body>
+</html>
